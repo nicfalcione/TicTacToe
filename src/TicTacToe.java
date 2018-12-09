@@ -135,11 +135,12 @@ public class TicTacToe {
 				if (!GameState.hasCPU(choice) && !GameState.hasPlayer(choice)) {
 					placeToken(choice, player);
 				} else {
-					System.out.println("Choose another board location.");
+					System.out.println("\nChoose another board location.");
 					continue;
 				}
 			} else {
-				System.out.println("Choice not recognized.");
+				System.out.println("\nChoice not recognized.");
+				continue;
 			}
 
 			printBoard();
@@ -241,17 +242,20 @@ public class TicTacToe {
 			System.out.print(".");
 			Thread.sleep(COUNT_DELAY);
 			System.out.print(".\n");
+
+			// Generates a number between 0.0 and 1.0, which simulates flipping a coin
+			if (Math.random() < 0.5) {
+				System.out.println("Heads\n");
+				Thread.sleep(PRINT_DELAY);
+				return HEADS;
+			}
+			System.out.println("Tails\n");
+			Thread.sleep(PRINT_DELAY);
+			return TAILS;
 		} catch (InterruptedException e) {
 			System.out.println("Something went wrong!");
 		}
-
-		// Generates a number between 0.0 and 1.0, which simulates flipping a coin
-		if (Math.random() < 0.5) {
-			System.out.println("Heads\n");
-			return HEADS;
-		}
-		System.out.println("Tails\n");
-		return TAILS;
+		return "";
 	}
 
 	/**
